@@ -1,5 +1,5 @@
 module PasswordUtil
-  class ConfigurationError < StandardError; end;
+  class ConfigurationError < StandardError; end
 
   UPPER_LETTERS = ('A'..'Z').to_a.freeze
   LOWER_LETTERS = ('a'..'z').to_a.freeze
@@ -39,7 +39,8 @@ module PasswordUtil
     end
 
     password.shuffle!
-    fail ConfigurationError.new('No usable character set.') if charset.empty?
+    raise ConfigurationError, 'No usable character set.' if charset.empty?
+
     password << charset.sample.sample while password.length < password_length
     password.join('')[0...password_length]
   end
