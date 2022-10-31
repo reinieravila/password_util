@@ -21,6 +21,8 @@ PasswordUtil.generate
 ## Configuration:
 
 ```
+# NOTE: All values assigned below are the default values
+
 # Sets the length of the password
 PasswordUtil.password_length = 8
 
