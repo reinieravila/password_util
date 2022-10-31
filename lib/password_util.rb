@@ -39,7 +39,7 @@ module PasswordUtil
     end
 
     password.shuffle!
-    fail ConfigurationError('No usable character set.') if charset.empty?
+    fail ConfigurationError.new('No usable character set.') if charset.empty?
     password << charset.sample.sample while password.length < password_length
     password.join('')[0...password_length]
   end

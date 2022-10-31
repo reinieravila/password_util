@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name        = 'password_util'
-  spec.version     = '0.0.1'
+  spec.version     = '0.0.3'
   spec.summary     = 'Password Utility Tool'
   spec.description = 'Different password related utility tool.'
   spec.authors     = ['Reinier John Avila']
