@@ -11,11 +11,28 @@ gem 'password_util'
 
 ## Usage:
 
+In Ruby:
 ```
 require 'password_util'
 
 # Default Length: 8
 PasswordUtil.generate
+```
+
+As executable:
+```
+# ENV vars:
+#   - LENGTH=<number>
+#   - UPPER_LETTERS=<0: off | 1: on>
+#   - LOWER_LETTERS=<0: off | 1: on>
+#   - NUMBERS=<0: off | 1: on>
+#   - SYMBOLS=<0: off | 1: on>
+
+LENGTH=4 password_util
+# Aa1!
+
+SYMBOLS=0 LENGTH=4 password_util
+# 1Xn2
 ```
 
 ## Configuration:
