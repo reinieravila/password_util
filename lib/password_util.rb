@@ -1,4 +1,6 @@
 module PasswordUtil
+  ##
+  # Configuration exception.
   class ConfigurationError < StandardError; end
 
   UPPER_LETTERS = ('A'..'Z').to_a.freeze
@@ -6,6 +8,10 @@ module PasswordUtil
   NUMBERS = ('0'..'9').to_a.freeze
   SYMBOLS = %w[~ ` ! @ # $ % ^ & * ( ) _ - + = { \[ } \] | \\ : ; " ' < , > . ? /].freeze
 
+  ##
+  # Validates configuration.
+  #
+  # @return [String] the generated password
   def self.validate_config!
     boolean_classes = [TrueClass, FalseClass]
 
@@ -22,6 +28,8 @@ module PasswordUtil
     raise ConfigurationError, 'No usable character set.' unless has_lower_letters || has_upper_letters || has_numbers || has_symbols
   end
 
+  ##
+  # Resets configuration to default.
   def self.reset_config
     self.password_length = 8
     self.has_lower_letters = true
@@ -34,6 +42,10 @@ module PasswordUtil
     self.min_symbols = 1
   end
 
+  ##
+  # Generates password.
+  #
+  # @return [String] the generated password
   def self.generate
     validate_config!
     charset = []

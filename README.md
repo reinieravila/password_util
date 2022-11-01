@@ -20,6 +20,8 @@ PasswordUtil.generate
 
 ## Configuration:
 
+For Rails, configuration can be placed in `config/initializers/password_util.rb`.
+
 ```
 # NOTE: All values assigned below are the default values
 
