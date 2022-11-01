@@ -22,6 +22,18 @@ module PasswordUtil
     raise ConfigurationError, 'No usable character set.' unless has_lower_letters || has_upper_letters || has_numbers || has_symbols
   end
 
+  def self.reset_config
+    self.password_length = 8
+    self.has_lower_letters = true
+    self.min_lower_letters = 1
+    self.has_upper_letters = true
+    self.min_upper_letters = 1
+    self.has_numbers = true
+    self.min_numbers = 1
+    self.has_symbols = true
+    self.min_symbols = 1
+  end
+
   def self.generate
     validate_config!
     charset = []
