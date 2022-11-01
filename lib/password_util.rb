@@ -6,7 +6,24 @@ module PasswordUtil
   NUMBERS = ('0'..'9').to_a.freeze
   SYMBOLS = %w[~ ` ! @ # $ % ^ & * ( ) _ - + = { \[ } \] | \\ : ; " ' < , > . ? /].freeze
 
+  def self.validate_config!
+    boolean_classes = [TrueClass, FalseClass]
+
+    raise ConfigurationError, 'password_length: expected Integer' unless password_length.is_a?(Integer)
+    raise ConfigurationError, 'has_lower_letters: expected Boolean' unless boolean_classes.include?(has_lower_letters.class)
+    raise ConfigurationError, 'min_lower_letters: expected Integer' unless min_lower_letters.is_a?(Integer)
+    raise ConfigurationError, 'has_upper_letters: expected Boolean' unless boolean_classes.include?(has_upper_letters.class)
+    raise ConfigurationError, 'min_upper_letters: expected Integer' unless min_upper_letters.is_a?(Integer)
+    raise ConfigurationError, 'has_numbers: expected Boolean' unless boolean_classes.include?(has_numbers.class)
+    raise ConfigurationError, 'min_numbers: expected Integer' unless min_numbers.is_a?(Integer)
+    raise ConfigurationError, 'has_symbols: expected Boolean' unless boolean_classes.include?(has_symbols.class)
+    raise ConfigurationError, 'min_symbols: expected Integer' unless min_symbols.is_a?(Integer)
+
+    raise ConfigurationError, 'No usable character set.' unless has_lower_letters || has_upper_letters || has_numbers || has_symbols
+  end
+
   def self.generate
+    validate_config!
     charset = []
     password = []
 
@@ -39,8 +56,6 @@ module PasswordUtil
     end
 
     password.shuffle!
-    raise ConfigurationError, 'No usable character set.' if charset.empty?
-
     password << charset.sample.sample while password.length < password_length
     password.join('')[0...password_length]
   end
