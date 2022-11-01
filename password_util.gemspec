@@ -1,8 +1,8 @@
 Gem::Specification.new do |spec|
   spec.name        = 'password_util'
-  spec.version     = '0.0.4'
-  spec.summary     = 'Password Utility Tool'
-  spec.description = 'Different password related utility tool.'
+  spec.version     = '0.0.5'
+  spec.summary     = 'Password Generation Utility Tool'
+  spec.description = 'Utility tool to generate password.'
   spec.authors     = ['Reinier John Avila']
   spec.email       = 'reinieravila@gmail.com'
   spec.files       = ['lib/password_util.rb']
