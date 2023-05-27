@@ -9,19 +9,19 @@ RSpec.describe PasswordUtil do
     end
 
     it 'contains at least 1 upper letter' do
-      expect(password.split('')).to(be_any { PasswordUtil::UPPER_LETTERS.include?(_1) })
+      expect(password.split('')).to(be_any { PasswordUtil::CharacterSets::UPPER_LETTERS.include?(_1) })
     end
 
     it 'contains at least 1 lower letter' do
-      expect(password.split('')).to(be_any { PasswordUtil::LOWER_LETTERS.include?(_1) })
+      expect(password.split('')).to(be_any { PasswordUtil::CharacterSets::LOWER_LETTERS.include?(_1) })
     end
 
     it 'contains at least 1 number' do
-      expect(password.split('')).to(be_any { PasswordUtil::NUMBERS.include?(_1) })
+      expect(password.split('')).to(be_any { PasswordUtil::CharacterSets::NUMBERS.include?(_1) })
     end
 
     it 'contains at least 1 symbol' do
-      expect(password.split('')).to(be_any { PasswordUtil::SYMBOLS.include?(_1) })
+      expect(password.split('')).to(be_any { PasswordUtil::CharacterSets::SYMBOLS.include?(_1) })
     end
   end
 
@@ -41,7 +41,7 @@ RSpec.describe PasswordUtil do
     end
 
     it 'throws ConfigurationError: No usable character set.' do
-      expect { described_class.generate }.to raise_error(PasswordUtil::ConfigurationError, 'No usable character set.')
+      expect { described_class.generate }.to raise_error(PasswordUtil::Config::ConfigurationError, 'No usable character set.')
     end
   end
 end
