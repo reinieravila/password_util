@@ -39,7 +39,7 @@ module PasswordUtil
       end
 
       password.shuffle!
-      password << charset.sample while password.length < config.password_length
+      password << charset.sample.sample while password.length < config.password_length
       password.join('')[0...config.password_length]
     end
 
